@@ -24,6 +24,6 @@ jobs:
       if: github.ref == 'refs/heads/master'
     - name: Push the release Docker image
       run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        VERSION=$env:GITHUB_REF_NAME make build.push
+        echo "$GITHUB_REF_NAME"
+        VERSION=$GITHUB_REF_NAME make build.push
       if: github.event_name == 'release'
